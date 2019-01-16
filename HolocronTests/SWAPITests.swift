@@ -19,7 +19,7 @@ class SWAPITests: XCTestCase {
     func testPerformancePeople() {
         let expectation = self.expectation(description: "People request")
         var result: [Person]?
-        provider.rx.request(.people(search: "Darth"))
+        provider.rx.request(.people(search: ""))
             .map([Person].self, atKeyPath: "results")
             .subscribe {
                 switch $0 {
@@ -36,6 +36,7 @@ class SWAPITests: XCTestCase {
 
         print(result)
         XCTAssertNotNil(result)
+        XCTAssertFalse(result!.isEmpty)
     }
 
     func testPerformancePerson() {

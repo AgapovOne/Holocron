@@ -66,5 +66,14 @@ final class SearchViewController: UIViewController {
             .disposed(by: disposeBag)
 
         searchController.searchBar.rx.text.onNext("")
+
+        tableView.rx.itemSelected.subscribe { [weak self] event in
+            switch event {
+            case .next(let indexPath):
+                self?.tableView.deselectRow(at: indexPath, animated: true)
+            default:
+                break
+            }
+        }
     }
 }

@@ -7,31 +7,63 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SearchViewController: UIViewController {
 
+    // MARK: - Properties
+    private let disposeBag = DisposeBag()
+    private lazy var tableView = UITableView()
+    private lazy var searchController = UISearchController(searchResultsController: nil)
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configure()
+        configureUI()
+        configureObservers()
     }
 
-    func configure() {
+    // MARK: - Private
+    private func configureUI() {
         view.backgroundColor = .white
 
         title = "Search"
 
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
-        navigationItem.searchController = search
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+
+        tableView.tableFooterView = UIView()
+
+        tableView.frame = view.frame
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(tableView)
+    }
+
+    private func configureObservers() {
+        let searchResults = searchController.searchBar.rx.text.orEmpty
+            .throttle(0.3, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .flatMapLatest { query -> Observable<[Person]> in
+                return NetworkService.getPeople(name: query)
+                    .catchErrorJustReturn([]).asObservable()
+            }
+            .observeOn(MainScheduler.instance)
+        searchResults
+            .debug()
+            .bind(to: tableView.rx.items(cellIdentifier: "Cell")) {
+                (index, model: Person, cell) in
+                cell.textLabel?.text = model.name
+                cell.detailTextLabel?.text = model.url.absoluteString
+            }
+            .disposed(by: disposeBag)
+
+        searchController.searchBar.rx.text.onNext("")
     }
 }
-
-extension SearchViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        print(searchController.searchBar.text)
-    }
-}
-

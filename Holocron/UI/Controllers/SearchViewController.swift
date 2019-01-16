@@ -37,8 +37,9 @@ final class SearchViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: "Cell")
 
+        tableView.rowHeight = 80
         tableView.tableFooterView = UIView()
 
         tableView.frame = view.frame

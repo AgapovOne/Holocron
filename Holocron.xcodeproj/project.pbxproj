@@ -12,6 +12,7 @@
 		8DB0FEE321EFA1C700FAF89F /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0FEE221EFA1C700FAF89F /* SWAPI.swift */; };
 		8DB0FEE621EFA47000FAF89F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0FEE521EFA47000FAF89F /* Person.swift */; };
 		8DB0FEE821EFB27800FAF89F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0FEE721EFB27800FAF89F /* NetworkService.swift */; };
+		8DC57B8121EFBEA00011FF8E /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC57B8021EFBEA00011FF8E /* PersonTableViewCell.swift */; };
 		8DF91F3921EF77AE003C98F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF91F3821EF77AE003C98F6 /* AppDelegate.swift */; };
 		8DF91F3B21EF77AE003C98F6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF91F3A21EF77AE003C98F6 /* SearchViewController.swift */; };
 		8DF91F3E21EF77AE003C98F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF91F3C21EF77AE003C98F6 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		8DB0FEE221EFA1C700FAF89F /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
 		8DB0FEE521EFA47000FAF89F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8DB0FEE721EFB27800FAF89F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		8DC57B8021EFBEA00011FF8E /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersonTableViewCell.swift; path = Holocron/UI/PersonTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		8DF91F3521EF77AE003C98F6 /* Holocron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Holocron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF91F3821EF77AE003C98F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DF91F3A21EF77AE003C98F6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +77,8 @@
 		8DB0FEDF21EF7B6B00FAF89F /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				8DF91F3A21EF77AE003C98F6 /* SearchViewController.swift */,
+				8DC57B7F21EFBE790011FF8E /* Views */,
+				8DC57B7E21EFBE730011FF8E /* Controllers */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -105,6 +108,22 @@
 				8DB0FEE521EFA47000FAF89F /* Person.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8DC57B7E21EFBE730011FF8E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8DF91F3A21EF77AE003C98F6 /* SearchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8DC57B7F21EFBE790011FF8E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8DC57B8021EFBEA00011FF8E /* PersonTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8DF91F2C21EF77AE003C98F6 = {
@@ -356,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC57B8121EFBEA00011FF8E /* PersonTableViewCell.swift in Sources */,
 				8DB0FEE821EFB27800FAF89F /* NetworkService.swift in Sources */,
 				8DF91F3B21EF77AE003C98F6 /* SearchViewController.swift in Sources */,
 				8DB0FEE321EFA1C700FAF89F /* SWAPI.swift in Sources */,

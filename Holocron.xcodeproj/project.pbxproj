@@ -66,6 +66,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8DB0FEDF21EF7B6B00FAF89F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		8DB0FEE021EF7B7300FAF89F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8DF91F3F21EF77B0003C98F6 /* Assets.xcassets */,
+				8DF91F3C21EF77AE003C98F6 /* Main.storyboard */,
+				8DF91F4121EF77B0003C98F6 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8DF91F2C21EF77AE003C98F6 = {
 			isa = PBXGroup;
 			children = (
@@ -89,11 +106,9 @@
 		8DF91F3721EF77AE003C98F6 /* Holocron */ = {
 			isa = PBXGroup;
 			children = (
+				8DB0FEE021EF7B7300FAF89F /* Resources */,
+				8DB0FEDF21EF7B6B00FAF89F /* UI */,
 				8DF91F3821EF77AE003C98F6 /* AppDelegate.swift */,
-				8DF91F3A21EF77AE003C98F6 /* ViewController.swift */,
-				8DF91F3C21EF77AE003C98F6 /* Main.storyboard */,
-				8DF91F3F21EF77B0003C98F6 /* Assets.xcassets */,
-				8DF91F4121EF77B0003C98F6 /* LaunchScreen.storyboard */,
 				8DF91F4421EF77B0003C98F6 /* Info.plist */,
 			);
 			path = Holocron;

@@ -16,7 +16,7 @@
 		8DF91F3E21EF77AE003C98F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF91F3C21EF77AE003C98F6 /* Main.storyboard */; };
 		8DF91F4021EF77B0003C98F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF91F3F21EF77B0003C98F6 /* Assets.xcassets */; };
 		8DF91F4321EF77B0003C98F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF91F4121EF77B0003C98F6 /* LaunchScreen.storyboard */; };
-		8DF91F4E21EF77B0003C98F6 /* HolocronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF91F4D21EF77B0003C98F6 /* HolocronTests.swift */; };
+		8DF91F4E21EF77B0003C98F6 /* SWAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF91F4D21EF77B0003C98F6 /* SWAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,7 @@
 		8DF91F4221EF77B0003C98F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DF91F4421EF77B0003C98F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DF91F4921EF77B0003C98F6 /* HolocronTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HolocronTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DF91F4D21EF77B0003C98F6 /* HolocronTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolocronTests.swift; sourceTree = "<group>"; };
+		8DF91F4D21EF77B0003C98F6 /* SWAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPITests.swift; sourceTree = "<group>"; };
 		8DF91F4F21EF77B0003C98F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B27AA86B179F8411D1E50295 /* Pods-Holocron.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Holocron.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Holocron/Pods-Holocron.debug.xcconfig"; sourceTree = "<group>"; };
 		D9AC9AE9FBE6B816DCBE5B95 /* Pods_Holocron.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Holocron.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +140,7 @@
 		8DF91F4C21EF77B0003C98F6 /* HolocronTests */ = {
 			isa = PBXGroup;
 			children = (
-				8DF91F4D21EF77B0003C98F6 /* HolocronTests.swift */,
+				8DF91F4D21EF77B0003C98F6 /* SWAPITests.swift */,
 				8DF91F4F21EF77B0003C98F6 /* Info.plist */,
 			);
 			path = HolocronTests;
@@ -364,7 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DF91F4E21EF77B0003C98F6 /* HolocronTests.swift in Sources */,
+				8DF91F4E21EF77B0003C98F6 /* SWAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

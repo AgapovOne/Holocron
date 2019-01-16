@@ -40,7 +40,7 @@ extension SWAPI: TargetType {
         case .person:
             return .requestPlain
         case .people(search: let search):
-            if let parameters = search.map({ ["search": $0] }) {
+            if let parameters = search?.notEmpty.map({ ["search": $0] }) {
                 return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
             } else {
                 return .requestPlain
@@ -50,5 +50,11 @@ extension SWAPI: TargetType {
 
     var headers: [String : String]? {
         return nil
+    }
+}
+
+private extension String {
+    var notEmpty: String? {
+        return self.isEmpty ? nil : self
     }
 }

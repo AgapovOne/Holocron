@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17AF7016AE77B5D7A619EFF2 /* Pods_Holocron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9AC9AE9FBE6B816DCBE5B95 /* Pods_Holocron.framework */; };
+		3393BEAF65B8D67DE4DC4DFA /* Pods_HolocronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37038FD9B9A6C1BF837FFCCE /* Pods_HolocronTests.framework */; };
 		8DF91F3921EF77AE003C98F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF91F3821EF77AE003C98F6 /* AppDelegate.swift */; };
 		8DF91F3B21EF77AE003C98F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF91F3A21EF77AE003C98F6 /* ViewController.swift */; };
 		8DF91F3E21EF77AE003C98F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF91F3C21EF77AE003C98F6 /* Main.storyboard */; };
@@ -26,6 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		289D1D486720B1698B92167D /* Pods-HolocronTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolocronTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HolocronTests/Pods-HolocronTests.debug.xcconfig"; sourceTree = "<group>"; };
+		37038FD9B9A6C1BF837FFCCE /* Pods_HolocronTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HolocronTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50D2D6A7B89520D7990E6D16 /* Pods-Holocron.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Holocron.release.xcconfig"; path = "Pods/Target Support Files/Pods-Holocron/Pods-Holocron.release.xcconfig"; sourceTree = "<group>"; };
+		7D71D0BD2A93C3A3EA564502 /* Pods-HolocronTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolocronTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HolocronTests/Pods-HolocronTests.release.xcconfig"; sourceTree = "<group>"; };
 		8DF91F3521EF77AE003C98F6 /* Holocron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Holocron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF91F3821EF77AE003C98F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DF91F3A21EF77AE003C98F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +42,8 @@
 		8DF91F4921EF77B0003C98F6 /* HolocronTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HolocronTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF91F4D21EF77B0003C98F6 /* HolocronTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolocronTests.swift; sourceTree = "<group>"; };
 		8DF91F4F21EF77B0003C98F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B27AA86B179F8411D1E50295 /* Pods-Holocron.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Holocron.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Holocron/Pods-Holocron.debug.xcconfig"; sourceTree = "<group>"; };
+		D9AC9AE9FBE6B816DCBE5B95 /* Pods_Holocron.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Holocron.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17AF7016AE77B5D7A619EFF2 /* Pods_Holocron.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3393BEAF65B8D67DE4DC4DFA /* Pods_HolocronTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +72,8 @@
 				8DF91F3721EF77AE003C98F6 /* Holocron */,
 				8DF91F4C21EF77B0003C98F6 /* HolocronTests */,
 				8DF91F3621EF77AE003C98F6 /* Products */,
+				9A92B178B4686D790D6CCFEB /* Pods */,
+				C1DAED087DABC65C7649CC84 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +108,26 @@
 			path = HolocronTests;
 			sourceTree = "<group>";
 		};
+		9A92B178B4686D790D6CCFEB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B27AA86B179F8411D1E50295 /* Pods-Holocron.debug.xcconfig */,
+				50D2D6A7B89520D7990E6D16 /* Pods-Holocron.release.xcconfig */,
+				289D1D486720B1698B92167D /* Pods-HolocronTests.debug.xcconfig */,
+				7D71D0BD2A93C3A3EA564502 /* Pods-HolocronTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C1DAED087DABC65C7649CC84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D9AC9AE9FBE6B816DCBE5B95 /* Pods_Holocron.framework */,
+				37038FD9B9A6C1BF837FFCCE /* Pods_HolocronTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DF91F5221EF77B0003C98F6 /* Build configuration list for PBXNativeTarget "Holocron" */;
 			buildPhases = (
+				49BA8704D3073FA3E95D182D /* [CP] Check Pods Manifest.lock */,
 				8DF91F3121EF77AE003C98F6 /* Sources */,
 				8DF91F3221EF77AE003C98F6 /* Frameworks */,
 				8DF91F3321EF77AE003C98F6 /* Resources */,
+				5A1F5C6784951DD5B07A2831 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -120,6 +154,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DF91F5521EF77B0003C98F6 /* Build configuration list for PBXNativeTarget "HolocronTests" */;
 			buildPhases = (
+				710CFE38679EDC62959CE3BF /* [CP] Check Pods Manifest.lock */,
 				8DF91F4521EF77B0003C98F6 /* Sources */,
 				8DF91F4621EF77B0003C98F6 /* Frameworks */,
 				8DF91F4721EF77B0003C98F6 /* Resources */,
@@ -191,6 +226,83 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		49BA8704D3073FA3E95D182D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Holocron-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A1F5C6784951DD5B07A2831 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Holocron/Pods-Holocron-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Holocron/Pods-Holocron-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		710CFE38679EDC62959CE3BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HolocronTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8DF91F3121EF77AE003C98F6 /* Sources */ = {
@@ -358,6 +470,7 @@
 		};
 		8DF91F5321EF77B0003C98F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B27AA86B179F8411D1E50295 /* Pods-Holocron.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -375,6 +488,7 @@
 		};
 		8DF91F5421EF77B0003C98F6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50D2D6A7B89520D7990E6D16 /* Pods-Holocron.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -392,6 +506,7 @@
 		};
 		8DF91F5621EF77B0003C98F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 289D1D486720B1698B92167D /* Pods-HolocronTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -412,6 +527,7 @@
 		};
 		8DF91F5721EF77B0003C98F6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D71D0BD2A93C3A3EA564502 /* Pods-HolocronTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

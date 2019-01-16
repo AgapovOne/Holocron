@@ -11,6 +11,7 @@
 		3393BEAF65B8D67DE4DC4DFA /* Pods_HolocronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37038FD9B9A6C1BF837FFCCE /* Pods_HolocronTests.framework */; };
 		8DB0FEE321EFA1C700FAF89F /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0FEE221EFA1C700FAF89F /* SWAPI.swift */; };
 		8DB0FEE621EFA47000FAF89F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0FEE521EFA47000FAF89F /* Person.swift */; };
+		8DB0FEE821EFB27800FAF89F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0FEE721EFB27800FAF89F /* NetworkService.swift */; };
 		8DF91F3921EF77AE003C98F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF91F3821EF77AE003C98F6 /* AppDelegate.swift */; };
 		8DF91F3B21EF77AE003C98F6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF91F3A21EF77AE003C98F6 /* SearchViewController.swift */; };
 		8DF91F3E21EF77AE003C98F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF91F3C21EF77AE003C98F6 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		7D71D0BD2A93C3A3EA564502 /* Pods-HolocronTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolocronTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HolocronTests/Pods-HolocronTests.release.xcconfig"; sourceTree = "<group>"; };
 		8DB0FEE221EFA1C700FAF89F /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
 		8DB0FEE521EFA47000FAF89F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		8DB0FEE721EFB27800FAF89F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8DF91F3521EF77AE003C98F6 /* Holocron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Holocron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF91F3821EF77AE003C98F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DF91F3A21EF77AE003C98F6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				8DB0FEE221EFA1C700FAF89F /* SWAPI.swift */,
+				8DB0FEE721EFB27800FAF89F /* NetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DB0FEE821EFB27800FAF89F /* NetworkService.swift in Sources */,
 				8DF91F3B21EF77AE003C98F6 /* SearchViewController.swift in Sources */,
 				8DB0FEE321EFA1C700FAF89F /* SWAPI.swift in Sources */,
 				8DB0FEE621EFA47000FAF89F /* Person.swift in Sources */,

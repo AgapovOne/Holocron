@@ -11,7 +11,17 @@ import RxSwift
 
 enum NetworkService {
 
-    static let provider = MoyaProvider<SWAPI>()
+    static let provider: MoyaProvider<SWAPI> = {
+        let plugin = NetworkActivityPlugin(networkActivityClosure: { (change, _) in
+            switch change {
+            case .began:
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            case .ended:
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        })
+        return MoyaProvider<SWAPI>(plugins: [plugin])
+    }()
 
     static func getPeople(name: String? = nil) -> Single<[Person]> {
         return NetworkService.provider.rx

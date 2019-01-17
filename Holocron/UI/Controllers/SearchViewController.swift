@@ -16,6 +16,7 @@ final class SearchViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private lazy var tableView = UITableView()
     private lazy var searchController = UISearchController(searchResultsController: nil)
+    private lazy var refreshControl = UIRefreshControl()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -45,17 +46,32 @@ final class SearchViewController: UIViewController {
         tableView.frame = view.frame
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(tableView)
+
+        tableView.refreshControl = refreshControl
     }
 
     private func configureObservers() {
-        let searchResults = searchController.searchBar.rx.text.orEmpty
+        let refreshControlEvent = refreshControl.rx.controlEvent(.valueChanged).map({ [weak self] in self?.searchController.searchBar.text ?? "" })
+        let searchBarTextEvent = searchController.searchBar.rx.text.orEmpty
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .flatMapLatest { query -> Observable<[Person]> in
-                return NetworkService.getPeople(name: query)
-                    .catchErrorJustReturn([]).asObservable()
-            }
-            .observeOn(MainScheduler.instance)
+
+        let searchResults = Observable.merge(refreshControlEvent, searchBarTextEvent)
+                    .flatMapLatest { [weak disposeBag] query -> Observable<[Person]> in
+                        let request = NetworkService.getPeople(name: query)
+
+                        if let disposeBag = disposeBag {
+                        request
+                            .subscribe { [weak self] _ in
+                                self?.refreshControl.endRefreshing()
+                            }.disposed(by: disposeBag)
+                        }
+
+                        return request
+                            .catchErrorJustReturn([]).asObservable()
+                    }
+                    .observeOn(MainScheduler.instance)
+
         searchResults
             .debug()
             .bind(to: tableView.rx.items(cellIdentifier: "Cell")) {
@@ -64,8 +80,6 @@ final class SearchViewController: UIViewController {
                 cell.detailTextLabel?.text = model.url.absoluteString
             }
             .disposed(by: disposeBag)
-
-        searchController.searchBar.rx.text.onNext("")
 
         Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(Person.self))
             .subscribe { [weak self] event in
@@ -79,5 +93,8 @@ final class SearchViewController: UIViewController {
                     break
                 }
             }.disposed(by: disposeBag)
+
+        // Start with searching for everyone
+        searchController.searchBar.rx.text.onNext("")
     }
 }

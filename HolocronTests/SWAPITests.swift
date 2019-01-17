@@ -11,12 +11,12 @@ import XCTest
 import RxSwift
 import Moya
 
-class SWAPITests: XCTestCase {
+final class SWAPITests: XCTestCase {
 
-    let disposeBag = DisposeBag()
-    let provider = MoyaProvider<SWAPI>()
+    private let disposeBag = DisposeBag()
+    private let provider = MoyaProvider<SWAPI>()
 
-    func testPerformancePeople() {
+    func testPeopleAPIRequest() {
         let expectation = self.expectation(description: "People request")
         var result: [Person]?
         provider.rx.request(.people(search: ""))
@@ -34,12 +34,11 @@ class SWAPITests: XCTestCase {
 
         waitForExpectations(timeout: 10, handler: nil)
 
-        print(result)
         XCTAssertNotNil(result)
         XCTAssertFalse(result!.isEmpty)
     }
 
-    func testPerformancePerson() {
+    func testPersonAPIRequest() {
         let expectation = self.expectation(description: "Person request")
         var result: Person?
         provider.rx.request(.person(id: 1))
@@ -57,7 +56,7 @@ class SWAPITests: XCTestCase {
 
         waitForExpectations(timeout: 10, handler: nil)
 
-        print(result)
         XCTAssertNotNil(result)
+        XCTAssertEqual(result!.name, "Luke Skywalker")
     }
 }

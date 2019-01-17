@@ -67,13 +67,25 @@ final class SearchViewController: UIViewController {
 
         searchController.searchBar.rx.text.onNext("")
 
-        tableView.rx.itemSelected.subscribe { [weak self] event in
+        tableView.rx.itemSelected
+            .subscribe { [weak self] event in
             switch event {
             case .next(let indexPath):
                 self?.tableView.deselectRow(at: indexPath, animated: true)
             default:
                 break
             }
-        }
+        }.disposed(by: disposeBag)
+
+        tableView.rx.modelSelected(Person.self)
+            .subscribe { [weak self] event in
+                switch event {
+                case .next(let person):
+                    let detailsViewController = DetailsViewController.instantiate(person: person)
+                    self?.navigationController?.pushViewController(detailsViewController, animated: true)
+                default:
+                    break
+                }
+            }.disposed(by: disposeBag)
     }
 }

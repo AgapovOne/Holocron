@@ -72,30 +72,42 @@ final class SearchViewController: UIViewController {
             .distinctUntilChanged()
 
         let searchResults = Observable.merge(refreshControlEvent, searchBarTextEvent)
-                    .flatMapLatest { [weak disposeBag] query -> Observable<[Person]> in
-                        let request = NetworkService.getPeople(name: query)
+            .flatMapLatest { [weak disposeBag] query -> Observable<[Person]> in
+                let request = NetworkService.getPeople(name: query)
 
-                        if let disposeBag = disposeBag {
-                        request
-                            .observeOn(MainScheduler.instance)
-                            .subscribe { [weak self] _ in
-                                self?.refreshControl.endRefreshing()
-                            }.disposed(by: disposeBag)
-                        }
-                        return request.catchError({ (error) -> PrimitiveSequence<SingleTrait, [Person]> in
-                            print(error)
-                            return Single<[Person]>.just([])
-                        })
-                            .catchErrorJustReturn([]).asObservable()
-                    }
-                    .observeOn(MainScheduler.instance)
+                if let disposeBag = disposeBag {
+                    request
+                        .observeOn(MainScheduler.instance)
+                        .subscribe { [weak self] _ in
+                            self?.refreshControl.endRefreshing()
+                        }.disposed(by: disposeBag)
+                }
+                return request.catchError({ (error) -> PrimitiveSequence<SingleTrait, [Person]> in
+                    print(error)
+                    return Single<[Person]>.just([])
+                })
+                    .catchErrorJustReturn([]).asObservable()
+            }
+            .observeOn(MainScheduler.instance)
 
         searchResults
-            .debug()
+//            .debug()
             .bind(to: tableView.rx.items(cellIdentifier: "Cell")) {
                 (index, model: Person, cell) in
+                cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
                 cell.textLabel?.text = model.name
-                cell.detailTextLabel?.text = model.url.absoluteString
+
+                let details: [String?] = [
+                    (model.gender?.rawValue.capitalized).map({ "is \($0)" }),
+                    (model.eyeColor?.capitalized).map({ "with \($0) eyes" }),
+                    (model.hairColor?.capitalized).map({ "\($0) hair" }),
+                    "\(model.skinColor.capitalized) skin",
+                    "\(model.mass) kg",
+                    "\(model.height) cm",
+                     "born in \(model.birthYear)"
+                ]
+                cell.detailTextLabel?.numberOfLines = 0
+                cell.detailTextLabel?.text = details.compactMap({ $0 }).joined(separator: ", ")
             }
             .disposed(by: disposeBag)
 

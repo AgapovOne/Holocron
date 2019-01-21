@@ -104,7 +104,7 @@ final class SearchViewController: UIViewController {
                     "\(model.skinColor.capitalized) skin",
                     "\(model.mass) kg",
                     "\(model.height) cm",
-                     "born in \(model.birthYear)"
+                    model.birthYear.map({ "born in \($0)" })
                 ]
                 cell.detailTextLabel?.numberOfLines = 0
                 cell.detailTextLabel?.text = details.compactMap({ $0 }).joined(separator: ", ")

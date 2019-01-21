@@ -14,7 +14,7 @@ enum Gender: String, Codable {
 }
 
 struct Person: Codable {
-    let birthYear: String
+    let birthYear: String?
 
     let eyeColor: String?
     let gender: Gender?
@@ -44,7 +44,6 @@ struct Person: Codable {
     // Added because of unknown and n\a in gender, eye_color, hair_color
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        birthYear = try container.decode(String.self, forKey: .birthYear)
 
         /// Handles case when "unknown" and "n/a" converts into optional for easier model usage
         func decode<T>(value: T?) -> T? {
@@ -58,6 +57,7 @@ struct Person: Codable {
                 return nil
             }
         }
+        birthYear = decode(value: try? container.decode(String.self, forKey: .birthYear))
         eyeColor = decode(value: try? container.decode(String.self, forKey: .eyeColor))
         gender = decode(value: try? container.decode(Gender.self, forKey: .gender))
         hairColor = decode(value: try? container.decode(String.self, forKey: .hairColor))

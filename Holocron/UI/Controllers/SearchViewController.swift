@@ -14,9 +14,33 @@ final class SearchViewController: UIViewController {
 
     // MARK: - Properties
     private let disposeBag = DisposeBag()
-    private lazy var tableView = UITableView()
-    private lazy var searchController = UISearchController(searchResultsController: nil)
-    private lazy var refreshControl = UIRefreshControl()
+    private lazy var tableView: UITableView = {
+
+        let tableView = UITableView()
+
+        tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: "Cell")
+
+        tableView.rowHeight = 80
+        tableView.tableFooterView = UIView()
+
+        tableView.frame = view.frame
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(tableView)
+
+        tableView.refreshControl = refreshControl
+        return tableView
+    }()
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        return searchController
+    }()
+    private lazy var refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.tintColor = .blue
+        return control
+    }()
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -37,21 +61,12 @@ final class SearchViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
-
-        tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: "Cell")
-
-        tableView.rowHeight = 80
-        tableView.tableFooterView = UIView()
-
-        tableView.frame = view.frame
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(tableView)
-
-        tableView.refreshControl = refreshControl
     }
 
     private func configureObservers() {
-        let refreshControlEvent = refreshControl.rx.controlEvent(.valueChanged).map({ [weak self] in self?.searchController.searchBar.text ?? "" })
+        let refreshControlEvent = refreshControl.rx
+            .controlEvent(.valueChanged)
+            .map { [weak self] in self?.searchController.searchBar.text ?? "" }
         let searchBarTextEvent = searchController.searchBar.rx.text.orEmpty
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()

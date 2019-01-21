@@ -10,8 +10,10 @@ private extension String {
 
 var str = "Hello, playground"
 var str2 = ""
+var str3: String?
 
 str.notEmpty
 str2.notEmpty
+str3?.notEmpty
 
 //: [Next](@next)

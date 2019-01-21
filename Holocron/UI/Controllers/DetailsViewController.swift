@@ -15,6 +15,7 @@ final class DetailsViewController: UIViewController {
         let stackView = UIStackView(frame: view.frame)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
+        stackView.spacing = 16
         return stackView
     }()
 
@@ -37,12 +38,31 @@ final class DetailsViewController: UIViewController {
         stackView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.addSubview(stackView)
 
-        let label = UILabel()
-        label.text = "HAHAGHAHAHAH"
-        stackView.addArrangedSubview(label)
+        let values: [String?] = [
+            (person?.birthYear),
+            (person?.eyeColor),
+            (person?.gender?.rawValue.uppercased()),
+            (person?.hairColor),
+            (person?.mass),
+            (person?.height),
+            (person?.homeworld),
+            (person?.name),
+            (person?.skinColor),
+            //            (person?.created),
+            //            (person?.edited),
+            (person?.url.absoluteString),
+            (person?.films.map({ $0.absoluteString }).joined(separator: "; ")),
+            (person?.species.map({ $0.absoluteString }).joined(separator: "; ")),
+            (person?.starships.map({ $0.absoluteString }).joined(separator: "; ")),
+            (person?.vehicles.map({ $0.absoluteString }).joined(separator: "; "))
+        ]
 
-        let label2 = UILabel()
-        label2.text = "WOW ITS YOU RIGHT?!@>!@>"
-        stackView.addArrangedSubview(label2)
+        values
+            .compactMap({ $0 })
+            .forEach {
+                let label = UILabel()
+                label.text = $0
+                stackView.addArrangedSubview(label)
+        }
     }
 }

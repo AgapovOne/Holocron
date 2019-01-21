@@ -38,6 +38,7 @@
 		37038FD9B9A6C1BF837FFCCE /* Pods_HolocronTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HolocronTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D2D6A7B89520D7990E6D16 /* Pods-Holocron.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Holocron.release.xcconfig"; path = "Pods/Target Support Files/Pods-Holocron/Pods-Holocron.release.xcconfig"; sourceTree = "<group>"; };
 		7D71D0BD2A93C3A3EA564502 /* Pods-HolocronTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HolocronTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HolocronTests/Pods-HolocronTests.release.xcconfig"; sourceTree = "<group>"; };
+		8D12A99A21F462DF006374BE /* Holocron.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Holocron.playground; sourceTree = "<group>"; };
 		8D1FACD921F0E5510034206F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		8D1FACDB21F0EA190034206F /* SWNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWNavigationController.swift; sourceTree = "<group>"; };
 		8DB0FEE221EFA1C700FAF89F /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 		8DF91F2C21EF77AE003C98F6 = {
 			isa = PBXGroup;
 			children = (
+				8D12A99A21F462DF006374BE /* Holocron.playground */,
 				8DF91F3721EF77AE003C98F6 /* Holocron */,
 				8DF91F4C21EF77B0003C98F6 /* HolocronTests */,
 				8DF91F3621EF77AE003C98F6 /* Products */,
@@ -330,6 +332,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${PODS_ROOT}/Reveal-SDK/RevealServer-20/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -343,6 +346,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",

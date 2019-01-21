@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.1)
+  - Cartography (3.1.0)
   - DefaultsKit (0.0.9)
   - Kingfisher (5.1.0)
   - Moya/Core (12.0.1):
@@ -9,6 +10,7 @@ PODS:
     - Moya/Core
     - RxSwift (~> 4.0)
   - Result (4.1.0)
+  - Reveal-SDK (20)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
@@ -17,33 +19,39 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Cartography
   - DefaultsKit
   - Kingfisher
   - Moya/RxSwift
+  - Reveal-SDK
   - RxCocoa
   - RxSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Cartography
     - DefaultsKit
     - Kingfisher
     - Moya
     - Result
+    - Reveal-SDK
     - RxAtomic
     - RxCocoa
     - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Cartography: 1988b7578871a56c036e7af17195cb2190edf18c
   DefaultsKit: e47d11c54a53c66f9e5c65a1992dead90bc7144f
   Kingfisher: fcec238063d17404fca89bf0a850583211c4cbf6
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Reveal-SDK: 43206a57f575632fd304e85385cc259b5d359e32
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: 9357a12728ecd82e8e450022e111937957f87b4d
+PODFILE CHECKSUM: 83f5f3529059966e6472dd6b57a04241d5fb6ccd
 
 COCOAPODS: 1.5.3

@@ -77,6 +77,7 @@ final class SearchViewController: UIViewController {
 
                         if let disposeBag = disposeBag {
                         request
+                            .observeOn(MainScheduler.instance)
                             .subscribe { [weak self] _ in
                                 self?.refreshControl.endRefreshing()
                             }.disposed(by: disposeBag)

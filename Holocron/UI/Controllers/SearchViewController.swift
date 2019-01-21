@@ -82,8 +82,10 @@ final class SearchViewController: UIViewController {
                                 self?.refreshControl.endRefreshing()
                             }.disposed(by: disposeBag)
                         }
-
-                        return request
+                        return request.catchError({ (error) -> PrimitiveSequence<SingleTrait, [Person]> in
+                            print(error)
+                            return Single<[Person]>.just([])
+                        })
                             .catchErrorJustReturn([]).asObservable()
                     }
                     .observeOn(MainScheduler.instance)

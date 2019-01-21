@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cartography
 import RxSwift
 import RxCocoa
 
@@ -15,7 +16,6 @@ final class SearchViewController: UIViewController {
     // MARK: - Properties
     private let disposeBag = DisposeBag()
     private lazy var tableView: UITableView = {
-
         let tableView = UITableView()
 
         tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -23,12 +23,14 @@ final class SearchViewController: UIViewController {
         tableView.rowHeight = 80
         tableView.tableFooterView = UIView()
 
-        tableView.frame = view.frame
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(tableView)
-
         tableView.refreshControl = refreshControl
         return tableView
+    }()
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
     }()
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -61,6 +63,17 @@ final class SearchViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
+
+        tableView.frame = view.frame
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(tableView)
+
+        view.addSubview(errorLabel)
+        constrain(errorLabel) {
+            $0.centerY == $0.superview!.centerY
+            $0.leading == $0.superview!.leading + 16
+            $0.trailing == $0.superview!.trailing - 16
+        }
     }
 
     private func configureObservers() {
@@ -68,7 +81,7 @@ final class SearchViewController: UIViewController {
             .controlEvent(.valueChanged)
             .map { [weak self] in self?.searchController.searchBar.text ?? "" }
         let searchBarTextEvent = searchController.searchBar.rx.text.orEmpty
-            .throttle(0.3, scheduler: MainScheduler.instance)
+            .throttle(0.6, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
 
         let searchResults = Observable.merge(refreshControlEvent, searchBarTextEvent)
@@ -82,11 +95,21 @@ final class SearchViewController: UIViewController {
                             self?.refreshControl.endRefreshing()
                         }.disposed(by: disposeBag)
                 }
-                return request.catchError({ (error) -> PrimitiveSequence<SingleTrait, [Person]> in
-                    print(error)
-                    return Single<[Person]>.just([])
-                })
-                    .catchErrorJustReturn([]).asObservable()
+                return request
+                    .catchError({ [weak self] (error) in
+                        self?.errorLabel.text = error.localizedDescription
+                        self?.errorLabel.textColor = .red
+                        return Single<[Person]>.just([])
+                    })
+                    .do(onSuccess: { [weak self] _ in
+                        let text = self?.searchController.searchBar.text
+                        let errorString = text == nil
+                            ? "Nothing found"
+                            : "Nothing found for \"\(text!)\""
+                        self?.errorLabel.text = errorString
+                        self?.errorLabel.textColor = .black
+                    })
+                    .asObservable()
             }
             .observeOn(MainScheduler.instance)
 
@@ -109,6 +132,19 @@ final class SearchViewController: UIViewController {
                 cell.detailTextLabel?.numberOfLines = 0
                 cell.detailTextLabel?.text = details.compactMap({ $0 }).joined(separator: ", ")
             }
+            .disposed(by: disposeBag)
+
+        let searchEmptyDriver = searchResults
+            .map({ $0.isEmpty })
+            .asDriver(onErrorJustReturn: true)
+
+        searchEmptyDriver
+            .drive(tableView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        searchEmptyDriver
+            .map({ !$0 })
+            .drive(errorLabel.rx.isHidden)
             .disposed(by: disposeBag)
 
         Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(Person.self))

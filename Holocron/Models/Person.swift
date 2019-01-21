@@ -22,12 +22,12 @@ struct Person: Codable {
 
     let mass: String
     let height: String
-    let homeworld: String
     let name: String
     let skinColor: String
     let created: Date? // ISO 8601
     let edited: Date? // ISO 8601
     let url: URL
+    let homeworld: URL
     let films: [URL]
     let species: [URL]
     let starships: [URL]
@@ -64,12 +64,12 @@ struct Person: Codable {
 
         mass = try container.decode(String.self, forKey: .mass)
         height = try container.decode(String.self, forKey: .height)
-        homeworld = try container.decode(String.self, forKey: .homeworld)
         name = try container.decode(String.self, forKey: .name)
         skinColor = try container.decode(String.self, forKey: .skinColor)
         created = try? container.decode(Date.self, forKey: .created)
         edited = try? container.decode(Date.self, forKey: .edited)
         url = try container.decode(URL.self, forKey: .url)
+        homeworld = try container.decode(URL.self, forKey: .homeworld)
         films = try container.decode([URL].self, forKey: .films)
         species = try container.decode([URL].self, forKey: .species)
         starships = try container.decode([URL].self, forKey: .starships)

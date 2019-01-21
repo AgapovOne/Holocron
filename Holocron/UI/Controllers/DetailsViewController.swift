@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cartography
 
 final class DetailsViewController: UIViewController {
 
@@ -35,34 +36,48 @@ final class DetailsViewController: UIViewController {
 
         title = person.name
 
-        stackView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view.addSubview(stackView)
 
-        let values: [String?] = [
-            (person?.birthYear),
-            (person?.eyeColor),
-            (person?.gender?.rawValue.uppercased()),
-            (person?.hairColor),
-            (person?.mass),
-            (person?.height),
-            (person?.homeworld),
-            (person?.name),
-            (person?.skinColor),
-            //            (person?.created),
-            //            (person?.edited),
-            (person?.url.absoluteString),
-            (person?.films.map({ $0.absoluteString }).joined(separator: "; ")),
-            (person?.species.map({ $0.absoluteString }).joined(separator: "; ")),
-            (person?.starships.map({ $0.absoluteString }).joined(separator: "; ")),
-            (person?.vehicles.map({ $0.absoluteString }).joined(separator: "; "))
+        constrain(stackView) {
+            $0.edges == inset($0.superview!.safeAreaLayoutGuide.edges, 16)
+        }
+
+        let values: [(String, String?)] = [
+            ("Name", person?.name),
+            ("Birthdate year", person?.birthYear),
+            ("Eye color", person?.eyeColor?.capitalized),
+            ("Gender", person?.gender?.rawValue.capitalized),
+            ("Hair color", person?.hairColor?.capitalized),
+            ("Skin color", person?.skinColor.capitalized),
+            ("Weight", (person?.mass).map({ "\($0) kg" })),
+            ("Height", (person?.height).map({ "\($0) cm" })),
+//            ("Find out more", person?.url.absoluteString),
+//            ("Homeworld", person?.homeworld.absoluteString),
+//            ("Films", person?.films.map({ $0.absoluteString }).joined(separator: ";\n")),
+//            ("Species related", person?.species.map({ $0.absoluteString }).joined(separator: ";'n")),
+//            ("Starships related", person?.starships.map({ $0.absoluteString }).joined(separator: ";\n")),
+//            ("Vehicles related", person?.vehicles.map({ $0.absoluteString }).joined(separator: ";\n"))
         ]
 
         values
-            .compactMap({ $0 })
+            .compactMap({ $0.1 == nil ? nil : ($0.0, $0.1!) })
             .forEach {
-                let label = UILabel()
-                label.text = $0
-                stackView.addArrangedSubview(label)
+                let innerStackView = UIStackView()
+                innerStackView.axis = .horizontal
+                innerStackView.spacing = 16
+
+                let keyLabel = UILabel()
+                keyLabel.numberOfLines = 1
+                keyLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+                keyLabel.text = $0.0
+                innerStackView.addArrangedSubview(keyLabel)
+
+                let valueLabel = UILabel()
+                valueLabel.numberOfLines = 0
+                valueLabel.text = $0.1
+                keyLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
+                innerStackView.addArrangedSubview(valueLabel)
+                stackView.addArrangedSubview(innerStackView)
         }
     }
 }

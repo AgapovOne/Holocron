@@ -27,13 +27,13 @@ enum NetworkService {
         return NetworkService.provider.rx
             .request(.people(search: name))
             .filterSuccessfulStatusCodes()
-            .map([Person].self, atKeyPath: "results")
+            .map([Person].self, atKeyPath: "results", using: Person.jsonDecoder)
     }
 
     static func getPerson(id: Int) -> Single<Person> {
         return NetworkService.provider.rx
             .request(.person(id: id))
             .filterSuccessfulStatusCodes()
-            .map(Person.self)
+            .map(Person.self, using: Person.jsonDecoder)
     }
 }

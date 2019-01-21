@@ -137,16 +137,10 @@ final class SearchViewController: UIViewController {
             }
             .disposed(by: disposeBag)
 
-        let searchEmptyDriver = searchResults
-            .map({ $0.isEmpty })
-            .asDriver(onErrorJustReturn: true)
-
-        searchEmptyDriver
-            .drive(tableView.rx.isHidden)
-            .disposed(by: disposeBag)
-
-        searchEmptyDriver
-            .map({ !$0 })
+        searchResults
+            .map({ $0.isEmpty }) // Emptiness check
+            .asDriver(onErrorJustReturn: true) // Empty if there is error
+            .map({ !$0 }) // Hide error label when array is not empty
             .drive(errorLabel.rx.isHidden)
             .disposed(by: disposeBag)
 

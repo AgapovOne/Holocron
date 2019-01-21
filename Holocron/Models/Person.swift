@@ -41,18 +41,12 @@ struct Person: Codable {
         case films, gender, height, homeworld, mass, name, species, starships, url, vehicles, created, edited
     }
 
-    //    func encode(to encoder: Encoder) throws {
-    //        var container = encoder.container(keyedBy: CodingKeys.self)
-    //        try container.encode(title, forKey: .title)
-    //        try container.encode(price, forKey: .price)
-    //        try container.encode(quantity, forKey: .quantity)
-    //    }
-
     // Added because of unknown and n\a in gender, eye_color, hair_color
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         birthYear = try container.decode(String.self, forKey: .birthYear)
 
+        /// Handles case when "unknown" and "n/a" converts into optional for easier model usage
         func decode<T>(value: T?) -> T? {
             if let value = value {
                 if let stringValue = value as? String, stringValue == "unknown" || stringValue == "n/a" {

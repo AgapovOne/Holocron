@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import DefaultsKit
 import RxSwift
 import RxCocoa
 
@@ -63,6 +64,8 @@ final class SearchViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show known people", style: .plain, target: nil, action: nil)
 
         tableView.frame = view.frame
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -159,6 +162,28 @@ final class SearchViewController: UIViewController {
                     break
                 }
             }.disposed(by: disposeBag)
+
+        navigationItem.rightBarButtonItem?.rx.tap.subscribe { [weak self] event in
+            switch event {
+            case .next:
+                guard let people = Defaults.shared.get(for: Person.localStorageKey), !people.isEmpty else { return }
+                let alertController = UIAlertController(title: "Locally stored people", message: nil, preferredStyle: .actionSheet)
+
+                people.forEach { person in
+                    alertController.addAction(UIAlertAction(title: person.name, style: .default, handler: { [weak self] _ in
+                        let detailsViewController = DetailsViewController.instantiate(person: person)
+                        self?.navigationController?.pushViewController(detailsViewController, animated: true)
+                    }))
+                }
+                alertController.addAction(UIAlertAction(title: "Clear storage", style: .destructive, handler: { _ in
+                    Defaults.shared.clear(Person.localStorageKey)
+                }))
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self?.present(alertController, animated: true, completion: nil)
+            default:
+                break
+            }
+        }.disposed(by: disposeBag)
 
         // Start with searching for everyone
         searchController.searchBar.rx.text.onNext("")

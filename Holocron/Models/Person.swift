@@ -6,14 +6,14 @@
 //  Copyright © 2019 Alex Agapov. All rights reserved.
 //
 
-import Foundation
+import DefaultsKit
 
 enum Gender: String, Codable {
     case male
     case female
 }
 
-struct Person: Codable {
+struct Person: Codable, Equatable {
     let birthYear: String?
 
     let eyeColor: String?
@@ -83,4 +83,6 @@ extension Person {
         decoder.dateDecodingStrategy = .iso8601
         return decoder
     }()
+
+    static var localStorageKey = Key<[Person]>("PEOPLE_STORED")
 }

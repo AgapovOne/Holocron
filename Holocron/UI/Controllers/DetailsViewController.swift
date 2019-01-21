@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import DefaultsKit
 
 final class DetailsViewController: UIViewController {
 
@@ -32,6 +33,16 @@ final class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureUI()
+
+        var peopleArray = Defaults.shared.get(for: Person.localStorageKey) ?? []
+        if !peopleArray.contains(person) {
+            peopleArray.append(person)
+        }
+        Defaults.shared.set(peopleArray, for: Person.localStorageKey)
+    }
+
+    private func configureUI() {
         view.backgroundColor = .white
 
         title = person.name
@@ -54,7 +65,7 @@ final class DetailsViewController: UIViewController {
 //            ("Find out more", person?.url.absoluteString),
 //            ("Homeworld", person?.homeworld.absoluteString),
 //            ("Films", person?.films.map({ $0.absoluteString }).joined(separator: ";\n")),
-//            ("Species related", person?.species.map({ $0.absoluteString }).joined(separator: ";'n")),
+//            ("Species related", person?.species.map({ $0.absoluteString }).joined(separator: ";\n")),
 //            ("Starships related", person?.starships.map({ $0.absoluteString }).joined(separator: ";\n")),
 //            ("Vehicles related", person?.vehicles.map({ $0.absoluteString }).joined(separator: ";\n"))
         ]
